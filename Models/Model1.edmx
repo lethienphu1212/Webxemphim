@@ -1,0 +1,1445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MovieProjectV2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutID" />
+          </Key>
+          <Property Name="AboutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="MetaKeywords" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescriptions" Type="nchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ads">
+          <Key>
+            <PropertyRef Name="AdsID" />
+          </Key>
+          <Property Name="AdsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameAds" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageAds" Type="nvarchar(max)" />
+          <Property Name="UrlAds" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="MetaKeywords" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescriptions" Type="nchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdvertisingPartners">
+          <Key>
+            <PropertyRef Name="PartnerID" />
+          </Key>
+          <Property Name="PartnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="MetaKeywords" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescriptions" Type="nchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="DisplayOrder" Type="int" />
+          <Property Name="SeoTittle" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MovieID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Content" Type="varchar(max)" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="MetaKeywords" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescriptions" Type="nchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MovieProjectV2.dbo.Contracts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Contracts">
+          <Key>
+            <PropertyRef Name="ContractID" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="ContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Credential">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserGroupID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoleID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="text" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="FilmProviders">
+          <Key>
+            <PropertyRef Name="ProviderID" />
+          </Key>
+          <Property Name="ProviderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoiDichVuQuangCao">
+          <Key>
+            <PropertyRef Name="MaQuangCao" />
+          </Key>
+          <Property Name="MaQuangCao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDichVuQuangCao" Type="nvarchar" MaxLength="50" />
+          <Property Name="GiaTien" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="MaNhaQuangCao" Type="int" />
+          <Property Name="MaGiaoDich" Type="int" />
+          <Property Name="MaKhuyenMai" Type="int" />
+        </EntityType>
+        <EntityType Name="GoiDichVuXemPhim">
+          <Key>
+            <PropertyRef Name="MaGoiDichVu" />
+          </Key>
+          <Property Name="MaGoiDichVu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenGoiDichVu" Type="nvarchar" MaxLength="50" />
+          <Property Name="GiaTien" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="MaKhuyenMai" Type="int" />
+        </EntityType>
+        <EntityType Name="KhuyenMaiGoiXemPhim">
+          <Key>
+            <PropertyRef Name="MaKhuyenMai" />
+          </Key>
+          <Property Name="MaKhuyenMai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKhuyenMai" Type="nvarchar" MaxLength="50" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="NgayBatDau" Type="datetime" />
+          <Property Name="NgayKetThuc" Type="datetime" />
+          <Property Name="GiaGiam" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="MoreImages" Type="xml" />
+          <Property Name="Actor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Directors" Type="nvarchar" MaxLength="50" />
+          <Property Name="Time" Type="text" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="MovieLink" Type="nvarchar(max)" />
+          <Property Name="TrailerLink" Type="nvarchar(max)" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="Rate" Type="int" />
+          <Property Name="TrailerID" Type="int" />
+          <Property Name="Viewed" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="MetaKeywords" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescriptions" Type="nchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="TopHot" Type="datetime" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="MovieLink" Type="nvarchar(max)" />
+          <Property Name="TrailerLink" Type="nvarchar(max)" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="Rate" Type="int" />
+          <Property Name="TrailerID" Type="int" />
+          <Property Name="Viewed" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="MetaKeywords" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescriptions" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="TopHot" Type="datetime" />
+          <Property Name="Tags" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageNews" Type="nvarchar(max)" />
+          <Property Name="MoreDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NhaQuangCao">
+          <Key>
+            <PropertyRef Name="MaNhaQuangCao" />
+          </Key>
+          <Property Name="MaNhaQuangCao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNhaQuangCao" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaGiaoDich" Type="int" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Slide">
+          <Key>
+            <PropertyRef Name="SlideID" />
+          </Key>
+          <Property Name="SlideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ThanhToan">
+          <Key>
+            <PropertyRef Name="MaGiaoDich" />
+          </Key>
+          <Property Name="MaGiaoDich" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaTaiKhoan" Type="int" />
+          <Property Name="TongTien" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="NgayGiaoDich" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Trailer">
+          <Key>
+            <PropertyRef Name="TrailerID" />
+          </Key>
+          <Property Name="TrailerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="32" />
+          <Property Name="PermissionID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="150" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="GroupID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__GoiDichVu__MaGia__0CA5D9DE">
+          <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="0..1" />
+          <End Role="GoiDichVuQuangCao" Type="Self.GoiDichVuQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThanhToan">
+              <PropertyRef Name="MaGiaoDich" />
+            </Principal>
+            <Dependent Role="GoiDichVuQuangCao">
+              <PropertyRef Name="MaGiaoDich" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoiDichVu__MaKhu__06ED0088">
+          <End Role="KhuyenMaiGoiXemPhim" Type="Self.KhuyenMaiGoiXemPhim" Multiplicity="0..1" />
+          <End Role="GoiDichVuXemPhim" Type="Self.GoiDichVuXemPhim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuyenMaiGoiXemPhim">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Principal>
+            <Dependent Role="GoiDichVuXemPhim">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoiDichVu__MaKhu__0D99FE17">
+          <End Role="KhuyenMaiGoiXemPhim" Type="Self.KhuyenMaiGoiXemPhim" Multiplicity="0..1" />
+          <End Role="GoiDichVuQuangCao" Type="Self.GoiDichVuQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuyenMaiGoiXemPhim">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Principal>
+            <Dependent Role="GoiDichVuQuangCao">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoiDichVu__MaNha__0BB1B5A5">
+          <End Role="NhaQuangCao" Type="Self.NhaQuangCao" Multiplicity="0..1" />
+          <End Role="GoiDichVuQuangCao" Type="Self.GoiDichVuQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaQuangCao">
+              <PropertyRef Name="MaNhaQuangCao" />
+            </Principal>
+            <Dependent Role="GoiDichVuQuangCao">
+              <PropertyRef Name="MaNhaQuangCao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhaQuangC__MaGia__07E124C1">
+          <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="0..1" />
+          <End Role="NhaQuangCao" Type="Self.NhaQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThanhToan">
+              <PropertyRef Name="MaGiaoDich" />
+            </Principal>
+            <Dependent Role="NhaQuangCao">
+              <PropertyRef Name="MaGiaoDich" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhaQuangC__MaGia__6D2D2E85">
+          <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="0..1" />
+          <End Role="NhaQuangCao" Type="Self.NhaQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThanhToan">
+              <PropertyRef Name="MaGiaoDich" />
+            </Principal>
+            <Dependent Role="NhaQuangCao">
+              <PropertyRef Name="MaGiaoDich" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="MovieProjectV2ModelStoreContainer">
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ads" EntityType="Self.Ads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdvertisingPartners" EntityType="Self.AdvertisingPartners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Credential" EntityType="Self.Credential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilmProviders" EntityType="Self.FilmProviders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoiDichVuQuangCao" EntityType="Self.GoiDichVuQuangCao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoiDichVuXemPhim" EntityType="Self.GoiDichVuXemPhim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhuyenMaiGoiXemPhim" EntityType="Self.KhuyenMaiGoiXemPhim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movie" EntityType="Self.Movie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaQuangCao" EntityType="Self.NhaQuangCao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThanhToan" EntityType="Self.ThanhToan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trailer" EntityType="Self.Trailer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contracts" EntityType="Self.Contracts" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Contracts].[ContractID] AS [ContractID], 
+    [Contracts].[ContractNumber] AS [ContractNumber], 
+    [Contracts].[StartDate] AS [StartDate], 
+    [Contracts].[EndDate] AS [EndDate], 
+    [Contracts].[Description] AS [Description], 
+    [Contracts].[CreatedDate] AS [CreatedDate], 
+    [Contracts].[CreatedBy] AS [CreatedBy], 
+    [Contracts].[ModifiedDate] AS [ModifiedDate], 
+    [Contracts].[ModifiedBy] AS [ModifiedBy], 
+    [Contracts].[Status] AS [Status]
+    FROM [dbo].[Contracts] AS [Contracts]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__GoiDichVu__MaGia__0CA5D9DE" Association="Self.FK__GoiDichVu__MaGia__0CA5D9DE">
+            <End Role="ThanhToan" EntitySet="ThanhToan" />
+            <End Role="GoiDichVuQuangCao" EntitySet="GoiDichVuQuangCao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoiDichVu__MaKhu__06ED0088" Association="Self.FK__GoiDichVu__MaKhu__06ED0088">
+            <End Role="KhuyenMaiGoiXemPhim" EntitySet="KhuyenMaiGoiXemPhim" />
+            <End Role="GoiDichVuXemPhim" EntitySet="GoiDichVuXemPhim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoiDichVu__MaKhu__0D99FE17" Association="Self.FK__GoiDichVu__MaKhu__0D99FE17">
+            <End Role="KhuyenMaiGoiXemPhim" EntitySet="KhuyenMaiGoiXemPhim" />
+            <End Role="GoiDichVuQuangCao" EntitySet="GoiDichVuQuangCao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoiDichVu__MaNha__0BB1B5A5" Association="Self.FK__GoiDichVu__MaNha__0BB1B5A5">
+            <End Role="NhaQuangCao" EntitySet="NhaQuangCao" />
+            <End Role="GoiDichVuQuangCao" EntitySet="GoiDichVuQuangCao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhaQuangC__MaGia__07E124C1" Association="Self.FK__NhaQuangC__MaGia__07E124C1">
+            <End Role="ThanhToan" EntitySet="ThanhToan" />
+            <End Role="NhaQuangCao" EntitySet="NhaQuangCao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhaQuangC__MaGia__6D2D2E85" Association="Self.FK__NhaQuangC__MaGia__6D2D2E85">
+            <End Role="ThanhToan" EntitySet="ThanhToan" />
+            <End Role="NhaQuangCao" EntitySet="NhaQuangCao" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MovieProjectV2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutID" />
+          </Key>
+          <Property Name="AboutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescriptions" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ad">
+          <Key>
+            <PropertyRef Name="AdsID" />
+          </Key>
+          <Property Name="AdsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameAds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageAds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UrlAds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescriptions" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdvertisingPartner">
+          <Key>
+            <PropertyRef Name="PartnerID" />
+          </Key>
+          <Property Name="PartnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescriptions" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="SeoTittle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MovieID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescriptions" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Credential">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserGroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="FilmProvider">
+          <Key>
+            <PropertyRef Name="ProviderID" />
+          </Key>
+          <Property Name="ProviderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoiDichVuQuangCao">
+          <Key>
+            <PropertyRef Name="MaQuangCao" />
+          </Key>
+          <Property Name="MaQuangCao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDichVuQuangCao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GiaTien" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="MaNhaQuangCao" Type="Int32" />
+          <Property Name="MaGiaoDich" Type="Int32" />
+          <Property Name="MaKhuyenMai" Type="Int32" />
+          <NavigationProperty Name="ThanhToan" Relationship="Self.FK__GoiDichVu__MaGia__0CA5D9DE" FromRole="GoiDichVuQuangCao" ToRole="ThanhToan" />
+          <NavigationProperty Name="KhuyenMaiGoiXemPhim" Relationship="Self.FK__GoiDichVu__MaKhu__0D99FE17" FromRole="GoiDichVuQuangCao" ToRole="KhuyenMaiGoiXemPhim" />
+          <NavigationProperty Name="NhaQuangCao" Relationship="Self.FK__GoiDichVu__MaNha__0BB1B5A5" FromRole="GoiDichVuQuangCao" ToRole="NhaQuangCao" />
+        </EntityType>
+        <EntityType Name="GoiDichVuXemPhim">
+          <Key>
+            <PropertyRef Name="MaGoiDichVu" />
+          </Key>
+          <Property Name="MaGoiDichVu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenGoiDichVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GiaTien" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="MaKhuyenMai" Type="Int32" />
+          <NavigationProperty Name="KhuyenMaiGoiXemPhim" Relationship="Self.FK__GoiDichVu__MaKhu__06ED0088" FromRole="GoiDichVuXemPhim" ToRole="KhuyenMaiGoiXemPhim" />
+        </EntityType>
+        <EntityType Name="KhuyenMaiGoiXemPhim">
+          <Key>
+            <PropertyRef Name="MaKhuyenMai" />
+          </Key>
+          <Property Name="MaKhuyenMai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKhuyenMai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
+          <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
+          <Property Name="GiaGiam" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="GoiDichVuQuangCaos" Relationship="Self.FK__GoiDichVu__MaKhu__0D99FE17" FromRole="KhuyenMaiGoiXemPhim" ToRole="GoiDichVuQuangCao" />
+          <NavigationProperty Name="GoiDichVuXemPhims" Relationship="Self.FK__GoiDichVu__MaKhu__06ED0088" FromRole="KhuyenMaiGoiXemPhim" ToRole="GoiDichVuXemPhim" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoreImages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Actor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Directors" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MovieLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TrailerLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="Rate" Type="Int32" />
+          <Property Name="TrailerID" Type="Int32" />
+          <Property Name="Viewed" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescriptions" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="TopHot" Type="DateTime" Precision="3" />
+          <Property Name="CountryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MovieLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TrailerLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="Rate" Type="Int32" />
+          <Property Name="TrailerID" Type="Int32" />
+          <Property Name="Viewed" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="TopHot" Type="DateTime" Precision="3" />
+          <Property Name="Tags" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageNews" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoreDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NhaQuangCao">
+          <Key>
+            <PropertyRef Name="MaNhaQuangCao" />
+          </Key>
+          <Property Name="MaNhaQuangCao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNhaQuangCao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaGiaoDich" Type="Int32" />
+          <NavigationProperty Name="GoiDichVuQuangCaos" Relationship="Self.FK__GoiDichVu__MaNha__0BB1B5A5" FromRole="NhaQuangCao" ToRole="GoiDichVuQuangCao" />
+          <NavigationProperty Name="ThanhToan" Relationship="Self.FK__NhaQuangC__MaGia__07E124C1" FromRole="NhaQuangCao" ToRole="ThanhToan" />
+          <NavigationProperty Name="ThanhToan1" Relationship="Self.FK__NhaQuangC__MaGia__6D2D2E85" FromRole="NhaQuangCao" ToRole="ThanhToan" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Slide">
+          <Key>
+            <PropertyRef Name="SlideID" />
+          </Key>
+          <Property Name="SlideID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ThanhToan">
+          <Key>
+            <PropertyRef Name="MaGiaoDich" />
+          </Key>
+          <Property Name="MaGiaoDich" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaTaiKhoan" Type="Int32" />
+          <Property Name="TongTien" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="NgayGiaoDich" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="GoiDichVuQuangCaos" Relationship="Self.FK__GoiDichVu__MaGia__0CA5D9DE" FromRole="ThanhToan" ToRole="GoiDichVuQuangCao" />
+          <NavigationProperty Name="NhaQuangCaos" Relationship="Self.FK__NhaQuangC__MaGia__07E124C1" FromRole="ThanhToan" ToRole="NhaQuangCao" />
+          <NavigationProperty Name="NhaQuangCaos1" Relationship="Self.FK__NhaQuangC__MaGia__6D2D2E85" FromRole="ThanhToan" ToRole="NhaQuangCao" />
+        </EntityType>
+        <EntityType Name="Trailer">
+          <Key>
+            <PropertyRef Name="TrailerID" />
+          </Key>
+          <Property Name="TrailerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PermissionID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="GroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractID" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="ContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__GoiDichVu__MaGia__0CA5D9DE">
+          <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="0..1" />
+          <End Role="GoiDichVuQuangCao" Type="Self.GoiDichVuQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThanhToan">
+              <PropertyRef Name="MaGiaoDich" />
+            </Principal>
+            <Dependent Role="GoiDichVuQuangCao">
+              <PropertyRef Name="MaGiaoDich" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoiDichVu__MaKhu__0D99FE17">
+          <End Role="KhuyenMaiGoiXemPhim" Type="Self.KhuyenMaiGoiXemPhim" Multiplicity="0..1" />
+          <End Role="GoiDichVuQuangCao" Type="Self.GoiDichVuQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuyenMaiGoiXemPhim">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Principal>
+            <Dependent Role="GoiDichVuQuangCao">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoiDichVu__MaNha__0BB1B5A5">
+          <End Role="NhaQuangCao" Type="Self.NhaQuangCao" Multiplicity="0..1" />
+          <End Role="GoiDichVuQuangCao" Type="Self.GoiDichVuQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaQuangCao">
+              <PropertyRef Name="MaNhaQuangCao" />
+            </Principal>
+            <Dependent Role="GoiDichVuQuangCao">
+              <PropertyRef Name="MaNhaQuangCao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoiDichVu__MaKhu__06ED0088">
+          <End Role="KhuyenMaiGoiXemPhim" Type="Self.KhuyenMaiGoiXemPhim" Multiplicity="0..1" />
+          <End Role="GoiDichVuXemPhim" Type="Self.GoiDichVuXemPhim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuyenMaiGoiXemPhim">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Principal>
+            <Dependent Role="GoiDichVuXemPhim">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhaQuangC__MaGia__07E124C1">
+          <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="0..1" />
+          <End Role="NhaQuangCao" Type="Self.NhaQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThanhToan">
+              <PropertyRef Name="MaGiaoDich" />
+            </Principal>
+            <Dependent Role="NhaQuangCao">
+              <PropertyRef Name="MaGiaoDich" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhaQuangC__MaGia__6D2D2E85">
+          <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="0..1" />
+          <End Role="NhaQuangCao" Type="Self.NhaQuangCao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThanhToan">
+              <PropertyRef Name="MaGiaoDich" />
+            </Principal>
+            <Dependent Role="NhaQuangCao">
+              <PropertyRef Name="MaGiaoDich" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MovieProjectV2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abouts" EntityType="Self.About" />
+          <EntitySet Name="Ads" EntityType="Self.Ad" />
+          <EntitySet Name="AdvertisingPartners" EntityType="Self.AdvertisingPartner" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Credentials" EntityType="Self.Credential" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="FilmProviders" EntityType="Self.FilmProvider" />
+          <EntitySet Name="GoiDichVuQuangCaos" EntityType="Self.GoiDichVuQuangCao" />
+          <EntitySet Name="GoiDichVuXemPhims" EntityType="Self.GoiDichVuXemPhim" />
+          <EntitySet Name="KhuyenMaiGoiXemPhims" EntityType="Self.KhuyenMaiGoiXemPhim" />
+          <EntitySet Name="Movies" EntityType="Self.Movie" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="NhaQuangCaos" EntityType="Self.NhaQuangCao" />
+          <EntitySet Name="Permissions" EntityType="Self.Permission" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Slides" EntityType="Self.Slide" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="ThanhToans" EntityType="Self.ThanhToan" />
+          <EntitySet Name="Trailers" EntityType="Self.Trailer" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+          <EntitySet Name="Contracts" EntityType="Self.Contract" />
+          <AssociationSet Name="FK__GoiDichVu__MaGia__0CA5D9DE" Association="Self.FK__GoiDichVu__MaGia__0CA5D9DE">
+            <End Role="ThanhToan" EntitySet="ThanhToans" />
+            <End Role="GoiDichVuQuangCao" EntitySet="GoiDichVuQuangCaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoiDichVu__MaKhu__0D99FE17" Association="Self.FK__GoiDichVu__MaKhu__0D99FE17">
+            <End Role="KhuyenMaiGoiXemPhim" EntitySet="KhuyenMaiGoiXemPhims" />
+            <End Role="GoiDichVuQuangCao" EntitySet="GoiDichVuQuangCaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoiDichVu__MaNha__0BB1B5A5" Association="Self.FK__GoiDichVu__MaNha__0BB1B5A5">
+            <End Role="NhaQuangCao" EntitySet="NhaQuangCaos" />
+            <End Role="GoiDichVuQuangCao" EntitySet="GoiDichVuQuangCaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoiDichVu__MaKhu__06ED0088" Association="Self.FK__GoiDichVu__MaKhu__06ED0088">
+            <End Role="KhuyenMaiGoiXemPhim" EntitySet="KhuyenMaiGoiXemPhims" />
+            <End Role="GoiDichVuXemPhim" EntitySet="GoiDichVuXemPhims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhaQuangC__MaGia__07E124C1" Association="Self.FK__NhaQuangC__MaGia__07E124C1">
+            <End Role="ThanhToan" EntitySet="ThanhToans" />
+            <End Role="NhaQuangCao" EntitySet="NhaQuangCaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhaQuangC__MaGia__6D2D2E85" Association="Self.FK__NhaQuangC__MaGia__6D2D2E85">
+            <End Role="ThanhToan" EntitySet="ThanhToans" />
+            <End Role="NhaQuangCao" EntitySet="NhaQuangCaos" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MovieProjectV2Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MovieProjectV2Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MovieProjectV2ModelStoreContainer" CdmEntityContainer="MovieProjectV2Entities">
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="AboutID" ColumnName="AboutID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescriptions" ColumnName="MetaDescriptions" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ads">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Ad">
+              <MappingFragment StoreEntitySet="Ads">
+                <ScalarProperty Name="AdsID" ColumnName="AdsID" />
+                <ScalarProperty Name="NameAds" ColumnName="NameAds" />
+                <ScalarProperty Name="ImageAds" ColumnName="ImageAds" />
+                <ScalarProperty Name="UrlAds" ColumnName="UrlAds" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescriptions" ColumnName="MetaDescriptions" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvertisingPartners">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.AdvertisingPartner">
+              <MappingFragment StoreEntitySet="AdvertisingPartners">
+                <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+                <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescriptions" ColumnName="MetaDescriptions" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="SeoTittle" ColumnName="SeoTittle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescriptions" ColumnName="MetaDescriptions" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Credentials">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Credential">
+              <MappingFragment StoreEntitySet="Credential">
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FilmProviders">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.FilmProvider">
+              <MappingFragment StoreEntitySet="FilmProviders">
+                <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoiDichVuQuangCaos">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.GoiDichVuQuangCao">
+              <MappingFragment StoreEntitySet="GoiDichVuQuangCao">
+                <ScalarProperty Name="MaQuangCao" ColumnName="MaQuangCao" />
+                <ScalarProperty Name="TenDichVuQuangCao" ColumnName="TenDichVuQuangCao" />
+                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+                <ScalarProperty Name="MaNhaQuangCao" ColumnName="MaNhaQuangCao" />
+                <ScalarProperty Name="MaGiaoDich" ColumnName="MaGiaoDich" />
+                <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoiDichVuXemPhims">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.GoiDichVuXemPhim">
+              <MappingFragment StoreEntitySet="GoiDichVuXemPhim">
+                <ScalarProperty Name="MaGoiDichVu" ColumnName="MaGoiDichVu" />
+                <ScalarProperty Name="TenGoiDichVu" ColumnName="TenGoiDichVu" />
+                <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+                <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhuyenMaiGoiXemPhims">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.KhuyenMaiGoiXemPhim">
+              <MappingFragment StoreEntitySet="KhuyenMaiGoiXemPhim">
+                <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
+                <ScalarProperty Name="TenKhuyenMai" ColumnName="TenKhuyenMai" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+                <ScalarProperty Name="GiaGiam" ColumnName="GiaGiam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Movie">
+              <MappingFragment StoreEntitySet="Movie">
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="MoreImages" ColumnName="MoreImages" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Directors" ColumnName="Directors" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="MovieLink" ColumnName="MovieLink" />
+                <ScalarProperty Name="TrailerLink" ColumnName="TrailerLink" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="TrailerID" ColumnName="TrailerID" />
+                <ScalarProperty Name="Viewed" ColumnName="Viewed" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescriptions" ColumnName="MetaDescriptions" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TopHot" ColumnName="TopHot" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="MovieLink" ColumnName="MovieLink" />
+                <ScalarProperty Name="TrailerLink" ColumnName="TrailerLink" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="TrailerID" ColumnName="TrailerID" />
+                <ScalarProperty Name="Viewed" ColumnName="Viewed" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescriptions" ColumnName="MetaDescriptions" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TopHot" ColumnName="TopHot" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="ImageNews" ColumnName="ImageNews" />
+                <ScalarProperty Name="MoreDescription" ColumnName="MoreDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaQuangCaos">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.NhaQuangCao">
+              <MappingFragment StoreEntitySet="NhaQuangCao">
+                <ScalarProperty Name="MaNhaQuangCao" ColumnName="MaNhaQuangCao" />
+                <ScalarProperty Name="TenNhaQuangCao" ColumnName="TenNhaQuangCao" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="MaGiaoDich" ColumnName="MaGiaoDich" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slides">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Slide">
+              <MappingFragment StoreEntitySet="Slide">
+                <ScalarProperty Name="SlideID" ColumnName="SlideID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThanhToans">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.ThanhToan">
+              <MappingFragment StoreEntitySet="ThanhToan">
+                <ScalarProperty Name="MaGiaoDich" ColumnName="MaGiaoDich" />
+                <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="NgayGiaoDich" ColumnName="NgayGiaoDich" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trailers">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Trailer">
+              <MappingFragment StoreEntitySet="Trailer">
+                <ScalarProperty Name="TrailerID" ColumnName="TrailerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroups">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.UserGroup">
+              <MappingFragment StoreEntitySet="UserGroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contracts">
+            <EntityTypeMapping TypeName="MovieProjectV2Model.Contract">
+              <MappingFragment StoreEntitySet="Contracts">
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+                <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MovieProjectV2Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MovieProjectV2Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MovieProjectV2Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MovieProjectV2Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MovieProjectV2Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MovieProjectV2Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MovieProjectV2Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MovieProjectV2Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MovieProjectV2Model.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
